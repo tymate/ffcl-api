@@ -70,3 +70,36 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+gem "graphql"
+gem "clearance"
+gem "doorkeeper"
+gem "graphql-extras"
+gem "graphql-connections"
+gem "search_object_graphql"
+gem "action_policy"
+gem "action_policy-graphql"
+gem "globalid"
+gem "rspec_api_documentation"
+gem "activerecord_where_assoc"
+
+group :development, :test do
+  gem "dotenv-rails"
+  gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
+  gem "rspec"
+  gem "rspec-rails"
+  gem "simplecov"
+  gem "fabrication"
+  gem "faker"
+  gem "pry-rails"
+end
+
+group :development do
+  gem "brakeman"
+  gem "bundler-audit"
+  gem "rubocop"
+  gem "rubocop-rails"
+  gem "rubocop-performance"
+  gem "rubocop-rspec"
+  gem "rubocop-graphql"
+  gem "annotate"
+end
