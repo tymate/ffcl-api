@@ -103,3 +103,7 @@ group :development do
   gem "rubocop-graphql"
   gem "annotate"
 end
+gem "graphiql-rails", group: :development
+gem "graphql_playground-rails"
+gem "graphql-rails_logger"
+gem "dry-effects"
