@@ -1,0 +1,54 @@
+inherit_from: .rubocop_todo.yml
+
+require:
+  - rubocop-rails
+  - rubocop-performance
+  - rubocop-rspec
+  - rubocop-graphql
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - 'bin/**/*'
+    - 'config/initializers/doorkeeper.rb'
+    - 'db/migrate/*'
+    - 'db/schema.rb'
+    - 'node_modules/**/*'
+Bundler/OrderedGems:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+Metrics/MethodLength:
+  Max: 20
+Naming/MethodParameterName:
+  Exclude:
+    - 'app/graphql/action_policy_extensions.rb'
+RSpec/MultipleExpectations:
+  Enabled: false
+RSpec/ExampleLength:
+  Enabled: false
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
+RSpec/FilePath:
+  SpecSuffixOnly: true
+GraphQL/UnusedArgument:
+  Enabled: false
+GraphQL/FieldDescription:
+  Enabled: false
+GraphQL/ArgumentDescription:
+  Enabled: false
+GraphQL/ObjectDescription:
+  Enabled: false
+GraphQL/ArgumentUniqueness:
+  Enabled: false
+GraphQL/OrderedFields:
+  Enabled: false
+GraphQL/OrderedArguments:
+  Enabled: false
+GraphQL/ExtractInputType:
+  MaxArguments: 10
+GraphQL/ExtractType:
+  Enabled: false

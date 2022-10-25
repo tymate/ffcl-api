@@ -12,17 +12,17 @@ class ApiController < ActionController::API
     render_error(
       message: errors.full_messages,
       attribute: errors.errors.map(&:type),
-      code: code
+      code:
     )
   end
 
   def render_error(message:, attribute: nil, code: 400)
     error = {
       error: {
-        code: code,
+        code:,
         status: Rack::Utils::HTTP_STATUS_CODES[code],
         messages: message,
-        attribute: attribute
+        attribute:
       }
     }
 
@@ -39,7 +39,7 @@ class ApiController < ActionController::API
     render_error(
       message: exception.response.description,
       attribute: exception.class.to_s.demodulize.underscore,
-      code: code
+      code:
     )
   end
 

@@ -6,7 +6,7 @@ class GraphqlController < ActionController::API
   def execute
     graphql(
       schema: FfclApiSchema,
-      context: { doorkeeper_token: doorkeeper_token }
+      context: { doorkeeper_token: }
     )
   rescue StandardError => e
     handle_error(e)

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationPolicy < ActionPolicy::Base
   authorize :doorkeeper_token
   authorize :user
