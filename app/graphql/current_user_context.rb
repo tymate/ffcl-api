@@ -10,7 +10,7 @@ module CurrentUserContext
   def current_user
     return context[:current_user] if context[:current_user].present?
 
-    doorkeeper_authorize!(:app)
+    doorkeeper_authorize!
 
     return unless doorkeeper_token&.resource_owner_id&.present?
 
