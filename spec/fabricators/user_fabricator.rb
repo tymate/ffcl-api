@@ -3,6 +3,7 @@
 Fabricator(:user) do
   email { Faker::Internet.email }
   password { Faker::Internet.password }
+  username { Faker::Internet.username }
 end
 
 # == Schema Information
@@ -14,6 +15,7 @@ end
 #  email              :string           not null
 #  encrypted_password :string(128)      not null
 #  remember_token     :string(128)      not null
+#  username           :string           not null
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #

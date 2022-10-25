@@ -15,4 +15,10 @@ if Rails.env.development?
     redirect_uri: 'https://heidenreich-hammes.co/asa_dooley',
     confidential: false
   )
+
+  User.create_with(
+    email: 'maxim.j@tymate.com',
+    username: 'mj',
+    password: 'x'
+  ).find_or_create_by(email: 'maxim.j@tymate.com')
 end
