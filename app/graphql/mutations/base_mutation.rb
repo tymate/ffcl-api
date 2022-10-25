@@ -15,10 +15,5 @@ module Mutations
     # Override `doorkeeper_authorize` to authorize the `:app` scope by default
     # and still keep the correct callback name.
     #
-    def doorkeeper_authorize!(*scopes)
-      return super(*scopes) if scopes.presence
-
-      super :app
-    end
   end
 end
