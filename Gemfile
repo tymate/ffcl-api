@@ -109,3 +109,4 @@ gem 'graphiql-rails', group: :development
 gem 'graphql_playground-rails'
 gem 'graphql-rails_logger'
 gem 'dry-effects'
+gem 'appsignal'

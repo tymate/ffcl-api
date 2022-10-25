@@ -1,0 +1,72 @@
+name: Ruby
+
+on:
+  push:
+    branches: [ develop, staging, main ]
+  pull_request: {}
+
+env:
+  DATABASE_URL: postgres://postgres:test@127.0.0.1:5432/test
+jobs:
+  rubocop:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+    - name: Run rubocop
+      uses: reviewdog/action-rubocop@master
+      with:
+        github_token: ${{ secrets.github_token }}
+        rubocop_extensions: 'rubocop-rails rubocop-performance rubocop-rspec rubocop-graphql'
+
+  security:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: bundler-audit
+        run: bundle exec bundle audit check --update
+      - name: Brakeman
+        run: bundle exec brakeman
+
+  test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:14
+        ports: ["5432:5432"]
+        env:
+          POSTGRES_PASSWORD: test
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+      # TODO: uncomment this if you use jobs in your tests
+      # redis:
+      #   image: redis
+      #   ports:
+      #     - 6379:6379
+      #   options: --entrypoint redis-server
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+    - name: Update apt repositories
+      run: sudo apt-get update
+    - name: Install ffmpeg
+      run: sudo apt-get install ffmpeg
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 3.1.2
+        bundler-cache: true
+    - name: Create database
+      run: bundle exec bin/rails db:create db:migrate RAILS_ENV=test
+    - name: Run tests
+      run: bundle exec rspec
