@@ -5,5 +5,6 @@ module Types
     description 'mutation type'
 
     field :register, mutation: Mutations::Register
+    field :create_club, mutation: Mutations::CreateClub
   end
 end

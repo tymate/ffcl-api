@@ -9,6 +9,5 @@ module Types
     field :description, String, null: false
     field :club_admin, Types::UserType
     field :invitation_code, Integer, null: false
-    field :users, [Types::UserType], null: false
   end
 end
