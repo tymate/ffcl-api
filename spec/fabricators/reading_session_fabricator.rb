@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Fabricator(:reading_session) do
   club
   name                { Faker::Lorem.sentence }

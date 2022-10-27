@@ -47,7 +47,6 @@ gem 'bootsnap', require: false
 # State Machines adds support for creating state machines for attributes on any Ruby class.
 gem 'state_machines-activerecord'
 
-
 # Use Sass to process CSS
 # gem "sassc-rails"
 

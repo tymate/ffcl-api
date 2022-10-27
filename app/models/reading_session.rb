@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ReadingSession < ApplicationRecord
   belongs_to :club
   # belongs_to :selected_book, class_name: 'Book', optional: true
