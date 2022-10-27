@@ -5,6 +5,13 @@ query currentUser {
   }
 }
 
+fragment errorFields on ValidationError {
+  path
+  message
+  attributes
+  error
+}
+
 mutation register($input: RegisterInput!) {
   register(input: $input) {
     user {
@@ -13,3 +20,15 @@ mutation register($input: RegisterInput!) {
     }
   }
 }
+
+mutation createClub($input: CreateClubInput!) {
+  createClub(input: $input) {
+    club {
+      label
+      description
+    }
+    errors {
+      ...errorFields
+    }
+  }
+} 

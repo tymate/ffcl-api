@@ -8,11 +8,4 @@ Rails.application.routes.draw do
       use_doorkeeper
     end
   end
-  # bo
-  root to: 'admin/users#index'
-
-  namespace :admin do
-    root to: 'users#index'
-    resources :users
-  end
 end
