@@ -16,7 +16,6 @@ module Mutations
         club_admin: current_user,
         invitation_code: rand(100_000..999_999)
       )
-      club.save!
 
       { club: }
     end
