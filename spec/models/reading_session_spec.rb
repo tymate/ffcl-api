@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe ReadingSession, type: :model do
+RSpec.describe ReadingSession do
   context 'with valid attributes' do
-    let (:reading_session) { Fabricate(:reading_session) }
+    let(:reading_session) { Fabricate(:reading_session) }
 
     it 'is valid' do
       expect(reading_session).to be_valid
@@ -10,20 +12,20 @@ RSpec.describe ReadingSession, type: :model do
 
     it 'changes state to draw' do
       reading_session.submit
-      expect(reading_session.draw?).to be_truthy
+      expect(reading_session).to be_draw
     end
 
     it 'changes state to reading' do
       reading_session.submit
       reading_session.draw
-      expect(reading_session.reading?).to be_truthy
+      expect(reading_session).to be_reading
     end
 
     it 'changes state to conclusion' do
       reading_session.submit
       reading_session.draw
       reading_session.complete
-      expect(reading_session.conclusion?).to be_truthy
+      expect(reading_session).to be_conclusion
     end
 
     it 'changes state to archived' do
@@ -31,7 +33,7 @@ RSpec.describe ReadingSession, type: :model do
       reading_session.draw
       reading_session.complete
       reading_session.archive
-      expect(reading_session.archived?).to be_truthy
+      expect(reading_session).to be_archived
     end
   end
 end
@@ -49,12 +51,15 @@ end
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
 #  club_id             :bigint           not null
+#  selected_book_id    :bigint
 #
 # Indexes
 #
-#  index_reading_sessions_on_club_id  (club_id)
+#  index_reading_sessions_on_club_id           (club_id)
+#  index_reading_sessions_on_selected_book_id  (selected_book_id)
 #
 # Foreign Keys
 #
 #  fk_rails_...  (club_id => clubs.id)
+#  fk_rails_...  (selected_book_id => books.id)
 #

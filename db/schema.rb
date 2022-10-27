@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_27_082429) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_27_092429) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "books", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "description"
+    t.string "category"
+    t.string "isbn", null: false
+    t.date "date_of_publication"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "club_users", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -75,6 +85,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_27_082429) do
     t.index ["uid"], name: "index_oauth_applications_on_uid", unique: true
   end
 
+  create_table "propositions", force: :cascade do |t|
+    t.bigint "reading_session_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "book_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_propositions_on_book_id"
+    t.index ["reading_session_id"], name: "index_propositions_on_reading_session_id"
+    t.index ["user_id"], name: "index_propositions_on_user_id"
+  end
+
   create_table "reading_sessions", force: :cascade do |t|
     t.bigint "club_id", null: false
     t.string "name", null: false
@@ -84,7 +105,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_27_082429) do
     t.datetime "submission_due_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "selected_book_id"
     t.index ["club_id"], name: "index_reading_sessions_on_club_id"
+    t.index ["selected_book_id"], name: "index_reading_sessions_on_selected_book_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -104,5 +127,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_27_082429) do
   add_foreign_key "club_users", "users"
   add_foreign_key "oauth_access_grants", "oauth_applications", column: "application_id"
   add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"
+  add_foreign_key "propositions", "books"
+  add_foreign_key "propositions", "reading_sessions"
+  add_foreign_key "propositions", "users"
+  add_foreign_key "reading_sessions", "books", column: "selected_book_id"
   add_foreign_key "reading_sessions", "clubs"
 end
