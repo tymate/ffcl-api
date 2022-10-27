@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Club < ApplicationRecord
+  has_many :sessions, dependent: :destroy, inverse_of: :club
 end
 
 # == Schema Information
