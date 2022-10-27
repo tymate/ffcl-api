@@ -2,7 +2,7 @@
 
 class ClubPolicy < ApplicationPolicy
   def show?
-    true
+    authenticated?
   end
 
   def create?

@@ -18,4 +18,10 @@ RSpec.describe Types::MutationType, type: :request do
       expect { do_graphql_request }.to change(Club, :count).by(1)
     end
   end
+
+  it 'creates trigger an error because we are not conencted' do
+    do_graphql_request
+    expect(errors).to be_present
+    expect(errors.dig(0, 'extensions', 'code')).to eq('unauthorized')
+  end
 end

@@ -8,7 +8,6 @@ class ApplicationPolicy < ActionPolicy::Base
 
   def authenticated?
     deny! if doorkeeper_token.nil?
-    true
   end
 
   def index?
