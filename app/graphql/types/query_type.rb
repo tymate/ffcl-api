@@ -10,6 +10,12 @@ module Types
     # Custom show queries
     field :current_user, Types::UserType, authorize: true, null: true
 
+    field :node, GraphQL::Types::Relay::Node,
+          authorize: true, null: true,
+          description: 'Fetches an object given its ID' do
+      argument :id, ID, required: true
+    end
+
     # Internal methods
     def self.define_show_field(query)
       graphql_type = "Types::#{query.camelcase}Type".safe_constantize
@@ -29,6 +35,10 @@ module Types
     SHOW_QUERIES_FOR_SINGLE_RECORDS.each do |query|
       define_show_field(query)
       define_show_method(query)
+    end
+
+    def node(id:)
+      context.schema.object_from_id(id, context)
     end
   end
 end

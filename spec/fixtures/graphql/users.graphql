@@ -4,3 +4,12 @@ query currentUser {
     username
   }
 }
+
+mutation register($input: RegisterInput!) {
+  register(input: $input) {
+    user {
+      email
+      username
+    }
+  }
+}

@@ -3,11 +3,11 @@
 module Helpers
   module GraphQL
     def id_from_object(object)
-      TestGeneratorSchema.id_from_object(object, nil, nil)
+      FfclApiSchema.id_from_object(object, nil, nil).to_s
     end
 
     def object_from_id(id)
-      TestGeneratorSchema.object_from_id(id, nil)
+      FfclApiSchema.object_from_id(id, nil)
     end
 
     def json
@@ -34,7 +34,7 @@ module Helpers
 
     def loader
       @loader ||= ::GraphQL::Extras::Test::Loader.new.tap do |loader|
-        Dir.glob('spec/fixtures/graphql/**/*.graphql') do |path|
+        Dir.glob('spec/fixtures/graphql/*.graphql') do |path|
           loader.load(path)
         end
       end
