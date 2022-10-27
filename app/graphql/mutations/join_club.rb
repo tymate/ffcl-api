@@ -9,6 +9,7 @@ module Mutations
     field :club, Types::ClubType, null: true
 
     def resolve(invitation_code:)
+      authorize! User, to: :join_club?
       club = Club.find_by(invitation_code:)
       club.users << current_user
 
