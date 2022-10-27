@@ -32,3 +32,14 @@ mutation createClub($input: CreateClubInput!) {
     }
   }
 } 
+
+mutation joinClub($input: JoinClubInput!) {
+  joinClub(input: $input) {
+    club {
+      invitationCode
+    }
+    errors {
+      ...errorFields
+    }
+  }
+}
