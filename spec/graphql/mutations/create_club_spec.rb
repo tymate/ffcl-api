@@ -19,9 +19,11 @@ RSpec.describe Types::MutationType, type: :request do
     end
   end
 
-  it 'creates trigger an error because we are not conencted' do
-    do_graphql_request
-    expect(errors).to be_present
-    expect(errors.dig(0, 'extensions', 'code')).to eq('unauthorized')
+  describe 'when unauthenticated' do
+    before do
+      do_graphql_request
+    end
+
+    include_examples 'when unauthenticated'
   end
 end
