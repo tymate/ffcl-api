@@ -10,9 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_25_122121) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_26_085550) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "club_users", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "club_id", null: false
+    t.boolean "admin", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["club_id"], name: "index_club_users_on_club_id"
+    t.index ["user_id"], name: "index_club_users_on_user_id"
+  end
+
+  create_table "clubs", force: :cascade do |t|
+    t.string "label"
+    t.string "description"
+    t.string "club_admin"
+    t.integer "invitation_code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "oauth_access_grants", force: :cascade do |t|
     t.bigint "resource_owner_id", null: false
@@ -69,6 +88,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_25_122121) do
     t.index ["remember_token"], name: "index_users_on_remember_token", unique: true
   end
 
+  add_foreign_key "club_users", "clubs"
+  add_foreign_key "club_users", "users"
   add_foreign_key "oauth_access_grants", "oauth_applications", column: "application_id"
   add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"
 end

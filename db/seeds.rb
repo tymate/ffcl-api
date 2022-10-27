@@ -21,4 +21,15 @@ if Rails.env.development?
     username: 'mj',
     password: 'x'
   ).find_or_create_by(email: 'maxim.j@tymate.com')
+
+  Club.create_with(
+    description: 'Club 1 description',
+    club_admin: User.first,
+    invitation_code: 1234
+  ).find_or_create_by(label: 'Club 1')
+
+  ClubUser.create_with(
+    admin: User.first
+  ).find_or_create_by(user: User.first, club: Club.first)
+
 end
