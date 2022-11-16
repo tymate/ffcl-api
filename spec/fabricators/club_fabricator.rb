@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 Fabricator(:club) do
-  label           { Faker::Lorem.words(2).join(' ') }
+  label           { Faker::Lorem.words(number: 1) }
   description     { Faker::Lorem.paragraph }
-  invitation_code { Faker::Lorem.characters(6) }
+  invitation_code { Faker::Lorem.characters(number: 4) }
 end
 
 # == Schema Information

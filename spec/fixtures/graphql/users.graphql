@@ -5,11 +5,41 @@ query currentUser {
   }
 }
 
+fragment errorFields on ValidationError {
+  path
+  message
+  attributes
+  error
+}
+
 mutation register($input: RegisterInput!) {
   register(input: $input) {
     user {
       email
       username
+    }
+  }
+}
+
+mutation createClub($input: CreateClubInput!) {
+  createClub(input: $input) {
+    club {
+      label
+      description
+    }
+    errors {
+      ...errorFields
+    }
+  }
+} 
+
+mutation joinClub($input: JoinClubInput!) {
+  joinClub(input: $input) {
+    club {
+      invitationCode
+    }
+    errors {
+      ...errorFields
     }
   }
 }

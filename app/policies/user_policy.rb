@@ -9,6 +9,10 @@ class UserPolicy < ApplicationPolicy
     user == record
   end
 
+  def join_club?
+    true
+  end
+
   # relation_scope do |scope|
   #   scope.all
   # end
