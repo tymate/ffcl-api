@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Club < ApplicationRecord
+  has_many :reading_sessions, dependent: :destroy, inverse_of: :club
   has_many :club_users, dependent: :destroy
   has_many :users, through: :club_users
 end

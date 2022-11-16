@@ -44,6 +44,9 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', require: false
 
+# State Machines adds support for creating state machines for attributes on any Ruby class.
+gem 'state_machines-activerecord'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
