@@ -13,7 +13,7 @@ module Mutations
       authorize! Club, to: :create?
       club = Club.create!(
         **args,
-        club_admin: current_user,
+        admin: current_user,
         invitation_code: rand(100_000..999_999)
       )
 
