@@ -25,7 +25,7 @@ if Rails.env.development?
   Club.create_with(
     description: 'Club 1 description',
     admin: User.first,
-    invitation_code: '1234'
+    invitation_code: '123456'
   ).find_or_create_by(label: 'Club 1')
 
   ClubUser.create_with(
