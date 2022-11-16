@@ -1,0 +1,18 @@
+fragment errorFields on ValidationError {
+  path
+  message
+  attributes
+  error
+}
+
+mutation createReadingSession($input: CreateReadingSessionInput!) {
+  createReadingSession(input: $input) {
+    readingSession {
+      id
+      name
+    }
+    errors {
+      ...errorFields
+    }
+  }
+} 
