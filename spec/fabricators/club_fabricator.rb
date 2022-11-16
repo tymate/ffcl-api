@@ -11,10 +11,14 @@ end
 # Table name: clubs
 #
 #  id              :bigint           not null, primary key
-#  club_admin      :string
 #  description     :string
 #  invitation_code :string(6)
 #  label           :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  admin_id        :bigint
+#
+# Indexes
+#
+#  index_clubs_on_admin_id  (admin_id)
 #
