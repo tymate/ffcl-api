@@ -5,19 +5,21 @@ require 'rails_helper'
 RSpec.describe Types::MutationType, type: :request do
   let(:query) { 'createReadingSession' }
   let(:club) { Fabricate(:club) }
+  let(:name) { Faker::Lorem.word }
   let(:variables) do
     {
       input: {
         clubId: club.to_sgid.to_s,
-        name: Faker::Lorem.word
+        name:
       }
     }
   end
 
   it_behaves_like 'with standard user' do
+    let(:club) { Fabricate(:club, admin: user) }
     it 'creates a new session' do
-      do_graphql_request
-      binding.pry
+      expect { do_graphql_request }.to change(club.reload.reading_sessions, :count).by(1)
+      expect(json.dig('data', query, 'readingSession', 'name')).to eq(name)
     end
   end
 

@@ -10,9 +10,8 @@ module Mutations
     field :reading_session, Types::ReadingSessionType, null: true
 
     def resolve(club:, **args)
-      binding.pry
       authorize! club, to: :create_session?
-      ReadingSession.create!(args)
+      reading_session = club.reading_sessions.create!(args)
 
       { reading_session: }
     end
