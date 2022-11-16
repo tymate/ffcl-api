@@ -25,7 +25,7 @@ RSpec.describe Types::MutationType, type: :request do
       end
 
       it "doesn't join the club" do
-        expect { do_graphql_request }.to_not change { club.users.count }
+        expect { do_graphql_request }.not_to(change { club.users.count })
       end
     end
   end
