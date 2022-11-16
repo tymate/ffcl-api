@@ -17,6 +17,17 @@ RSpec.describe Types::MutationType, type: :request do
     it 'joins the club' do
       expect { do_graphql_request }.to change(club.users, :count).by(1)
     end
+
+    context 'when the user is already a member' do
+      before do
+        club.users << user
+        club.reload
+      end
+
+      it "doesn't join the club" do
+        expect { do_graphql_request }.to_not change { club.users.count }
+      end
+    end
   end
 
   describe 'when unauthenticated' do
