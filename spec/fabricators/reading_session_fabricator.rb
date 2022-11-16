@@ -21,12 +21,15 @@ end
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
 #  club_id             :bigint           not null
+#  selected_book_id    :bigint
 #
 # Indexes
 #
-#  index_reading_sessions_on_club_id  (club_id)
+#  index_reading_sessions_on_club_id           (club_id)
+#  index_reading_sessions_on_selected_book_id  (selected_book_id)
 #
 # Foreign Keys
 #
 #  fk_rails_...  (club_id => clubs.id)
+#  fk_rails_...  (selected_book_id => books.id)
 #
