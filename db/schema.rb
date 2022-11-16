@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_27_092429) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_16_091526) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -38,7 +38,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_27_092429) do
     t.string "label"
     t.string "description"
     t.string "club_admin"
-    t.integer "invitation_code"
+    t.string "invitation_code", limit: 6
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

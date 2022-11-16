@@ -13,7 +13,7 @@ end
 #  id              :bigint           not null, primary key
 #  club_admin      :string
 #  description     :string
-#  invitation_code :integer
+#  invitation_code :string(6)
 #  label           :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null

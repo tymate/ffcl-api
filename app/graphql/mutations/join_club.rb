@@ -4,7 +4,7 @@ module Mutations
   class JoinClub < BaseMutation
     description 'Join a club'
 
-    argument :invitation_code, Integer, required: true
+    argument :invitation_code, String, required: true
 
     field :club, Types::ClubType, null: true
 

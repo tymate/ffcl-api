@@ -8,6 +8,6 @@ module Types
     field :label, String, null: false
     field :description, String, null: false
     field :club_admin, Types::UserType
-    field :invitation_code, Integer, null: false
+    field :invitation_code, String, null: false
   end
 end
