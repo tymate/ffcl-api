@@ -4,7 +4,7 @@ Fabricator(:club) do
   label           { Faker::Lorem.words(number: 1) }
   description     { Faker::Lorem.paragraph }
   invitation_code { Faker::Number.number(digits: 6) }
-  admin           { nil }
+  admin           { Fabricate(:user) }
 end
 
 # == Schema Information
