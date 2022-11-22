@@ -8,8 +8,11 @@ class ClubPolicy < ApplicationPolicy
   def create?
     true
   end
-
-  def update?
+  
+  def create_session?
     record.admin == user
   end
+  
+  alias update? create_session?
+
 end
