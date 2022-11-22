@@ -8,4 +8,8 @@ class ClubPolicy < ApplicationPolicy
   def create?
     true
   end
+
+  def update?
+    record.admin == user
+  end
 end
