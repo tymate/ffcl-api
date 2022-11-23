@@ -2,12 +2,10 @@
 
 class ClubPolicy < ApplicationPolicy
   def show?
-    true
+    user.present?
   end
 
-  def create?
-    true
-  end
+  alias create? show?
 
   def update?
     record.admin == user
