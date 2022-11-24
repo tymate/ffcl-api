@@ -12,4 +12,6 @@ class ClubPolicy < ApplicationPolicy
   def create_session?
     record.admin == user
   end
+
+  alias invitation? create_session?
 end

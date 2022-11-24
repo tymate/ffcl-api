@@ -15,12 +15,12 @@ class FfclApiSchema < GraphQL::Schema
 
   # Return a string UUID for `object`
   def self.id_from_object(object, _type_definition, _query_ctx)
-    object.to_sgid(expires_in: nil)
+    object.to_gid.to_param
   end
 
   # Given a string UUID, find the object
   def self.object_from_id(id, _query_ctx)
-    GlobalID::Locator.locate_signed(id)
+    GlobalID.find(id)
   end
 
   # Exceptions handlers
