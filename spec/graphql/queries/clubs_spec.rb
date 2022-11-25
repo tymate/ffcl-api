@@ -12,7 +12,7 @@ RSpec.describe Types::QueryType, type: :request do
     describe 'clubs' do
       before do
         clubs = Fabricate.times(2, :club)
-        other_club = Fabricate.times(3, :club)
+        Fabricate.times(3, :club)
         clubs.each do |club|
           club.users << user
         end
