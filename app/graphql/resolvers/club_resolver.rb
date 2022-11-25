@@ -39,5 +39,19 @@ module Resolvers
     ) do |scope, order|
       scope.order(order.column => order.direction)
     end
+
+    option(
+      :my_clubs,
+      type: Boolean, description: 'get only club where i am a member', default: false
+    ) do |scope, value|
+      value ? scope.where(id: current_user.clubs.ids) : scope
+    end
+
+    option(
+      :other_clubs,
+      type: Boolean, description: "get only club where i'm not a member", default: false
+    ) do |scope, value|
+      value ? scope.where.not(id: current_user.clubs.ids) : scope
+    end
   end
 end

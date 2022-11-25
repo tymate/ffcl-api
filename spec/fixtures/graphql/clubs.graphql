@@ -1,0 +1,12 @@
+query clubs($myClubs: Boolean, $otherClubs: Boolean) {
+  clubs(myClubs: $myClubs, otherClubs: $otherClubs) {
+    nodes {
+      id
+      label
+      description
+      admin {
+        username
+      }
+    }
+  }
+}
