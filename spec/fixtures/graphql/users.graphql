@@ -2,6 +2,12 @@ query currentUser {
   currentUser {
     email
     username
+    clubs {
+      nodes {
+        id
+        label
+      }
+    }
   }
 }
 
