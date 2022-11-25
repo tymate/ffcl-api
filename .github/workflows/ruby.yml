@@ -73,6 +73,5 @@ jobs:
     - name: SimpleCov+ Action
       uses: joshmfrankel/simplecov-check-action@1.0.0
       with:
-        minimum_suite_coverage: 70
-        minimum_file_coverage: 70
+        minimum_suite_coverage: 80
         github_token: ${{ secrets.GITHUB_TOKEN }}
