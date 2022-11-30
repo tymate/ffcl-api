@@ -13,9 +13,6 @@ class ApplicationPolicy < ActionPolicy::Base
   def index?
     true
   end
-
-  extend ActionPolicy::ScopeMatchers::ActiveRecord
-  scope_matcher :active_record_relation, ActiveRecord::Relation
   # Configure additional authorization contexts here
   # (`user` is added by default).
   #
