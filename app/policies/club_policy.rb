@@ -9,8 +9,6 @@ class ClubPolicy < ApplicationPolicy
     true
   end
 
-  alias_rule :index, to: :show?
-
   def create_session?
     record.admin == user
   end
