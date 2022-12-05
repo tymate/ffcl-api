@@ -10,7 +10,7 @@ module Mutations
     field :sent, Boolean, null: false
 
     def resolve(club:, email:)
-      authorize! club, to: :invitation?, with: ClubPolicy
+      authorize! club, to: :invitation?
 
       UserMailer.invitation_club(email, club).deliver_later
 
