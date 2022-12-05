@@ -9,7 +9,7 @@ RSpec.describe Types::MutationType, type: :request do
   let(:variables) do
     {
       input: {
-        id: club.id
+        clubId: id_from_object(club)
       }
     }
   end
@@ -20,8 +20,8 @@ RSpec.describe Types::MutationType, type: :request do
     it_behaves_like 'with standard user' do
       it 'deletes a club' do
         expect(errors).to be_blank
-        data = json.dig('data', 'deleteClub', 'club')
-        expect(data).not_to be_empty
+        data = json.dig('data', 'deleteClub', 'deleted')
+        expect(data).to be_truthy
         expect { club.reload }.to raise_error(ActiveRecord::RecordNotFound)
       end
     end

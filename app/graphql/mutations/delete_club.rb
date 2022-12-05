@@ -4,17 +4,15 @@ module Mutations
   class DeleteClub < BaseMutation
     description 'Delete a club'
 
-    argument :id, ID, required: true
+    argument :club_id, ID, required: true, loads: Types::ClubType
 
-    field :club, Types::ClubType, null: true
+    field :deleted, Boolean, null: false
 
-    def resolve(id:)
-      club = Club.find(id)
-      authorize! club, to: :destroy?, with: ClubPolicy
-
+    def resolve(club:)
+      authorize! club, to: :destroy?
       club.destroy!
 
-      { club: }
+      { deleted: true }
     end
   end
 end

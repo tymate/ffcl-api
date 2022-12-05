@@ -46,9 +46,7 @@ mutation joinClub($input: JoinClubInput!) {
 
 mutation deleteClub($input: DeleteClubInput!) {
   deleteClub(input: $input) {
-    club {
-      id
-    }
+    deleted
     errors {
       ...errorFields
     }
