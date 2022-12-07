@@ -54,6 +54,18 @@ mutation invitationClub($input: InvitationClubInput!) {
   }
 }
 
+mutation updateClub($input: UpdateClubInput!) {
+  updateClub(input: $input) {
+    club {
+      label
+      description
+    }
+    errors {
+      ...errorFields
+    }
+  }
+}
+
 mutation deleteClub($input: DeleteClubInput!) {
   deleteClub(input: $input) {
     deleted
