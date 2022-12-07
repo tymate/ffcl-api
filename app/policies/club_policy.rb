@@ -13,5 +13,5 @@ class ClubPolicy < ApplicationPolicy
     record.admin == user
   end
 
-  alias_rule :destroy?, :invitation? to: :create_session?
+  alias_rule :destroy?, :invitation?, to: :create_session?
 end
