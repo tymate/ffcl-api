@@ -2,16 +2,14 @@
 
 class ClubPolicy < ApplicationPolicy
   def show?
-    true
+    user.present?
   end
 
-  def create?
-    true
-  end
+  alias create? show?
 
   def create_session?
     record.admin == user
   end
 
-  alias destroy? create_session?
+  alias_rule :destroy?, :update?, to: :create_session?
 end

@@ -1,0 +1,35 @@
+query club($clubId: ID!) {
+  club(id: $clubId) {
+    id
+    label
+    invitationCode
+    users {
+      edges {
+        node {
+          username
+          email
+        }
+      }
+    }
+  }
+}
+
+query clubs {
+  clubs {
+    edges {
+      node {
+        id
+        label
+        invitationCode
+        users {
+          edges {
+            node {
+              username
+              email
+            }
+          }
+        }
+      }
+    }
+  }
+}
