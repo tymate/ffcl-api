@@ -9,7 +9,7 @@ RSpec.describe Types::MutationType, type: :request do
   let(:variables) do
     {
       input: {
-        id: club.id,
+        clubId: id_from_object(club),
         label: 'New label'
       }
     }
