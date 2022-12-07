@@ -1,15 +1,15 @@
 # frozen_string_literal: true
 
 class ClubPolicy < ApplicationPolicy
-  def create?
-    user.present?
+  def show?
+    true
   end
 
-  alias show? create?
+  alias create? show?
 
   def create_session?
     record.admin == user
   end
 
-  alias destroy? create_session?
+  alias_rule :destroy?, :update?, :invitation?, to: :create_session?
 end

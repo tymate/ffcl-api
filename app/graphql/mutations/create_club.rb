@@ -15,7 +15,8 @@ module Mutations
       club = Club.create!(
         **args,
         admin: current_user,
-        invitation_code: rand(100_000..999_999)
+        invitation_code: rand(100_000..999_999),
+        users: [current_user]
       )
 
       club.users << current_user
