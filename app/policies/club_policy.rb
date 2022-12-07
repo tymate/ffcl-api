@@ -1,13 +1,11 @@
 # frozen_string_literal: true
 
 class ClubPolicy < ApplicationPolicy
-  def show?
-    true
+  def create?
+    user.present?
   end
 
-  def create?
-    true
-  end
+  alias show? create?
 
   def create_session?
     record.admin == user

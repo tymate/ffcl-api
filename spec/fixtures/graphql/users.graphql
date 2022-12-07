@@ -27,6 +27,10 @@ mutation createClub($input: CreateClubInput!) {
       label
       description
     }
+    user {
+      email
+      username
+    }
     errors {
       ...errorFields
     }
