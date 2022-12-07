@@ -10,5 +10,6 @@ module Types
     field :update_club, mutation: Mutations::UpdateClub
     field :delete_club, mutation: Mutations::DeleteClub
     field :create_reading_session, mutation: Mutations::CreateReadingSession
+    field :invitation_club, mutation: Mutations::InvitationClub
   end
 end
