@@ -55,3 +55,12 @@ mutation updateClub($input: UpdateClubInput!) {
     }
   }
 }
+
+mutation deleteClub($input: DeleteClubInput!) {
+  deleteClub(input: $input) {
+    deleted
+    errors {
+      ...errorFields
+    }
+  }
+}

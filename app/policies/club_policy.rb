@@ -11,5 +11,5 @@ class ClubPolicy < ApplicationPolicy
     record.admin == user
   end
 
-  alias update? create_session?
+  alias destroy?, update?, create_session?
 end
