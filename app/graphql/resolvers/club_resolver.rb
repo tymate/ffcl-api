@@ -10,9 +10,11 @@ module Resolvers
 
     scope do
       if object.is_a?(ApplicationRecord)
-        authorized_scope(object.clubs)
+        # authorized_scope(object.clubs)
+        object.clubs
       else
-        authorized_scope(Club.all)
+        # authorized_scope(Club.all)
+        Club.all
       end
     end
 
