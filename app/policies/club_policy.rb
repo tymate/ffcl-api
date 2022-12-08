@@ -5,13 +5,13 @@ class ClubPolicy < ApplicationPolicy
     true
   end
 
-  def create?
-    true
-  end
+  alias create? show?
 
   def create_session?
     record.admin == user
   end
 
   relation_scope(&:all)
+
+  alias_rule :destroy?, :update?, :invitation?, to: :create_session?
 end

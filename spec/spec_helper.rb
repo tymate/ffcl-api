@@ -10,6 +10,14 @@ SimpleCov.start 'rails' do
   add_group 'Policies', 'app/policies'
   add_filter(/channels/)
   add_filter(/bin/)
+  add_filter('app/controllers/application_controller.rb')
+  add_filter('app/controllers/api_controller.rb')
+  add_filter('app/graphql/types/base_enum.rb')
+  add_filter('app/graphql/types/base_interface.rb')
+  add_filter('app/graphql/types/base_scalar.rb')
+  add_filter('app/graphql/types/base_union.rb')
+  add_filter('app/graphql/types/order_direction_type.rb')
+  add_filter('app/graphql/resolvers/base_resolver.rb')
 end
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate

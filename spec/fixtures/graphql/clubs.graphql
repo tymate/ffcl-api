@@ -10,3 +10,19 @@ query clubs($myClubs: Boolean, $otherClubs: Boolean) {
     }
   }
 }
+
+query club($clubId: ID!) {
+  club(id: $clubId) {
+    id
+    label
+    invitationCode
+    users {
+      edges {
+        node {
+          username
+          email
+        }
+      }
+    }
+  }
+}
