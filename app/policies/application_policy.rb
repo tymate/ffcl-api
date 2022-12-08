@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
 class ApplicationPolicy < ActionPolicy::Base
-  extend ActionPolicy::ScopeMatchers::ActiveRecord
-  scope_matcher :active_record_relation, ActiveRecord::Relation
-
   authorize :doorkeeper_token
   authorize :user
 
