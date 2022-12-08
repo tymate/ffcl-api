@@ -16,6 +16,13 @@ module Types
       argument :id, ID, required: true
     end
 
+    # Index queries
+    field :clubs, Types::ClubType.connection_type,
+          resolver: Resolvers::ClubResolver,
+          preauthorize: { to: :index?, with: ClubPolicy },
+          connection: GraphQL::Connections::Stable,
+          null: false
+
     # Internal methods
     def self.define_show_field(query)
       graphql_type = "Types::#{query.camelcase}Type".safe_constantize

@@ -1,3 +1,16 @@
+query clubs($myClubs: Boolean, $otherClubs: Boolean) {
+  clubs(myClubs: $myClubs, otherClubs: $otherClubs) {
+    nodes {
+      id
+      label
+      description
+      admin {
+        username
+      }
+    }
+  }
+}
+
 query club($clubId: ID!) {
   club(id: $clubId) {
     id
@@ -8,26 +21,6 @@ query club($clubId: ID!) {
         node {
           username
           email
-        }
-      }
-    }
-  }
-}
-
-query clubs {
-  clubs {
-    edges {
-      node {
-        id
-        label
-        invitationCode
-        users {
-          edges {
-            node {
-              username
-              email
-            }
-          }
         }
       }
     }

@@ -18,6 +18,22 @@ RSpec.describe Types::QueryType, type: :request do
         expect(data[:email]).to eq(user.email)
       end
 
+      context 'when get details of the current user with clubs' do
+        before do
+          clubs = Fabricate.times(3, :club)
+          clubs.each do |club|
+            club.users << user
+          end
+          user.reload
+        end
+
+        it 'returns the clubs' do
+          do_graphql_request
+          expect(errors).to be_blank
+          expect(json.dig('data', 'currentUser', 'clubs', 'nodes').count).to eq(3)
+        end
+      end
+
       context 'when token is expired' do
         before do
           token.update!(expires_in: 0)
