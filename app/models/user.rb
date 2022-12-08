@@ -3,8 +3,6 @@
 class User < ApplicationRecord
   include Clearance::User
 
-  has_many :club_users, dependent: :destroy
-  has_many :clubs, through: :club_users
   has_many :propositions, dependent: :destroy, inverse_of: :user
   has_many :club_users, dependent: :destroy
   has_many :clubs, through: :club_users
