@@ -10,7 +10,9 @@ RSpec.describe Types::MutationType, type: :request do
     {
       input: {
         clubId: id_from_object(club),
-        name:
+        name:,
+        submissionDueDate: 10.days.from_now,
+        readDueDate: 1.month.from_now
       }
     }
   end

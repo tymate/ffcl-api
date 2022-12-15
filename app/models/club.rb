@@ -6,6 +6,10 @@ class Club < ApplicationRecord
   has_many :users, through: :club_users
 
   belongs_to :admin, class_name: 'User', optional: true
+
+  def previous_reading_session
+    reading_sessions.find_by(state: 'conclusion')
+  end
 end
 
 # == Schema Information

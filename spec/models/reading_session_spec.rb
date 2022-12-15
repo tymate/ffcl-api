@@ -11,29 +11,49 @@ RSpec.describe ReadingSession do
     end
 
     it 'changes state to draw' do
-      reading_session.submit
+      reading_session.start_draw
       expect(reading_session).to be_draw
     end
 
     it 'changes state to reading' do
-      reading_session.submit
-      reading_session.draw
+      reading_session.start_draw
+      reading_session.start_reading
       expect(reading_session).to be_reading
     end
 
     it 'changes state to conclusion' do
-      reading_session.submit
-      reading_session.draw
-      reading_session.complete
+      reading_session.start_draw
+      reading_session.start_reading
+      reading_session.conclude
       expect(reading_session).to be_conclusion
     end
 
     it 'changes state to archived' do
-      reading_session.submit
-      reading_session.draw
-      reading_session.complete
+      reading_session.start_draw
+      reading_session.start_reading
+      reading_session.conclude
       reading_session.archive
       expect(reading_session).to be_archived
+    end
+  end
+
+  context 'with invalid submission_due_date' do
+    let(:reading_session) { Fabricate(:reading_session, submission_due_date: 2.days.ago) }
+
+    it 'is not valid' do
+      expect { reading_session }.to raise_error(ActiveRecord::RecordInvalid)
+    end
+  end
+
+  context 'with invalid read_due_date' do
+    let(:reading_session) do
+      Fabricate(:reading_session,
+                submission_due_date: 5.days.from_now,
+                read_due_date: 2.days.from_now)
+    end
+
+    it 'is not valid' do
+      expect { reading_session }.to raise_error(ActiveRecord::RecordInvalid)
     end
   end
 end

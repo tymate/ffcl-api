@@ -10,6 +10,8 @@ mutation createReadingSession($input: CreateReadingSessionInput!) {
     readingSession {
       id
       name
+      submissionDueDate
+      readDueDate
     }
     errors {
       ...errorFields

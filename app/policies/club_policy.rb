@@ -8,6 +8,8 @@ class ClubPolicy < ApplicationPolicy
   alias create? show?
 
   def create_session?
+    # to do : check if a session already exists with state submission, draw, reading
+    # if so return error
     record.admin == user
   end
 
