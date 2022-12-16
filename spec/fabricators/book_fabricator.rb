@@ -6,6 +6,7 @@ Fabricator(:book) do
   category            { Faker::Book.genre }
   isbn                { Faker::Number.number(digits: 10) }
   date_of_publication { Faker::Date.in_date_period }
+  google_book_id      { Faker::Alphanumeric.alphanumeric(number: 10) }
 end
 
 # == Schema Information

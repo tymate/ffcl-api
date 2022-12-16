@@ -20,6 +20,5 @@ module FfclApi
         'app', 'models', 'concerns'
       ).to_s
     ]
-
   end
 end

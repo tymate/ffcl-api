@@ -10,5 +10,6 @@ module Types
     field :category, String, null: true
     field :date_of_publication, GraphQL::Types::ISO8601DateTime, null: true
     field :isbn, String, null: false
+    field :google_book_id, String, null: false
   end
 end

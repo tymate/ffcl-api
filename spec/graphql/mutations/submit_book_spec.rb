@@ -4,21 +4,20 @@ require 'rails_helper'
 
 RSpec.describe Types::MutationType, type: :request do
   let(:json) { JSON.parse(response.body) }
+  let(:query) { 'submitBook' }
+  let(:club) { Fabricate(:club) }
+  let(:reading_session) { Fabricate(:reading_session, club:) }
+  let(:google_book_id) { '12345' }
+  let(:variables) do
+    {
+      input: {
+        readingSessionId: id_from_object(reading_session),
+        googleBookId: google_book_id
+      }
+    }
+  end
 
   it_behaves_like 'with standard user' do
-    let(:query) { 'submitBook' } 
-    let(:club) { Fabricate(:club) }
-    let(:reading_session) { Fabricate(:reading_session, club: club) }
-    let(:google_book_id) { '12345' }
-    let(:variables) do
-      {
-        input: {
-          readingSessionId: id_from_object(reading_session),
-          googleBookId: google_book_id
-        }
-      }
-    end
-
     before do
       stub_request(:get, "https://www.googleapis.com/books/v1/volumes/#{google_book_id}")
         .to_return(
@@ -35,9 +34,9 @@ RSpec.describe Types::MutationType, type: :request do
                   'publishedDate' => '1993',
                   'industryIdentifiers' =>
                   [{ 'type' => 'ISBN_10',
-                    'identifier' => '2070733467' },
-                  { 'type' => 'ISBN_13',
-                    'identifier' => '9782070733460' }]
+                     'identifier' => '2070733467' },
+                   { 'type' => 'ISBN_13',
+                     'identifier' => '9782070733460' }]
                 }
           }.to_json
         )
@@ -50,16 +49,16 @@ RSpec.describe Types::MutationType, type: :request do
 
       it 'allows user to join session and submit a book' do
         do_graphql_request
-        binding.pry
-        expect(json.dig('data', 'submitBook', 'proposition', 'readingSession', 'id')).to eq(reading_session.id.to_s)
-        expect(json.dig('data', 'submitBook', 'proposition', 'user', 'id')).to eq(user.id.to_s)
+
+        expect(json.dig('data', 'submitBook', 'proposition', 'user', 'id')).to eq(id_from_object(user))
+        expect(json.dig('data', 'submitBook', 'proposition', 'book', 'googleBookId')).to eq(google_book_id)
       end
     end
 
     context 'when user does not enter a google book id' do
       let(:google_book_id) { nil }
 
-      it 'does not allow user to join reading_session' do
+      it 'does not allow user to join reading_sepssion' do
         do_graphql_request
 
         expect(json.dig('errors', 0, 'message')).to be_present
