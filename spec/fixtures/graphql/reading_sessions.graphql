@@ -18,3 +18,24 @@ mutation createReadingSession($input: CreateReadingSessionInput!) {
     }
   }
 } 
+
+mutation submitBook($input: SubmitBookInput!) {
+  submitBook(input: $input) {
+    proposition {
+      id
+      readingSession{
+        id
+      }
+      user{
+        id
+        }
+      book{
+        id
+        title
+      }
+    }
+    errors {
+      ...errorFields
+    }
+  }
+}
