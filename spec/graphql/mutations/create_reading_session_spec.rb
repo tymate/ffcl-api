@@ -19,7 +19,7 @@ RSpec.describe Types::MutationType, type: :request do
 
   it_behaves_like 'with standard user' do
     context "when the user isn't the admin of the club" do
-      it 'returns an error' do
+      it 'return an error' do
         do_graphql_request
         expect(errors.dig(0, 'extensions', 'code')).to eq('forbidden')
       end
@@ -31,17 +31,6 @@ RSpec.describe Types::MutationType, type: :request do
       it 'creates a new session' do
         expect { do_graphql_request }.to change(club.reload.reading_sessions, :count).by(1)
         expect(json.dig('data', query, 'readingSession', 'name')).to eq(name)
-      end
-    end
-
-    context 'when a active reading_session already exists' do
-      let(:club) { Fabricate(:club, admin: user) }
-      let!(:reading_session) { Fabricate(:reading_session, club: club)}
-
-      it 'returns an error' do
-        do_graphql_request
-        binding.pry
-        expect(errors.dig(0, 'extensions', 'code')).to eq('forbidden')
       end
     end
   end
