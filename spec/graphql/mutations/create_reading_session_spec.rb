@@ -34,7 +34,9 @@ RSpec.describe Types::MutationType, type: :request do
       end
 
       context 'when a active reading_session already exists' do
-        let!(:reading_session) { Fabricate(:reading_session, club:) }
+        before do
+          Fabricate(:reading_session, club:)
+        end
 
         it 'returns an error' do
           do_graphql_request
