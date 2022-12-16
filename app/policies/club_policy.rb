@@ -8,9 +8,8 @@ class ClubPolicy < ApplicationPolicy
   alias create? show?
 
   def create_session?
-    # to do : check if a session already exists with state submission, draw, reading
-    # if so return error
-    record.admin == user
+    return false unless record.admin == user
+    record.reading_sessions.where(state: %w[submission draw reading]).empty?
   end
 
   # relation_scope(&:all)
