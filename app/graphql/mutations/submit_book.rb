@@ -37,7 +37,7 @@ module Mutations
         title: json['volumeInfo']['title'],
         description: json['volumeInfo']['description'],
         isbn: json.dig('volumeInfo', 'industryIdentifiers', 1, 'identifier'),
-        authors:
+        authors: authors
       }
     end
   end

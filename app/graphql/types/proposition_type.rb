@@ -5,7 +5,6 @@ module Types
     description 'User book proposition'
 
     field :id, ID, null: false
-    field :reading_session, Types::ReadingSessionType, null: false
     field :user, Types::UserType, null: false
     field :book, Types::BookType, null: false
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
