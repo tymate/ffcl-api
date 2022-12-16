@@ -16,9 +16,7 @@ module FfclApi
     config.eager_load_paths << Rails.root.join('lib')
     config.autoload_paths += Dir[
       Rails.root.join('lib').to_s,
-      Rails.root.join(
-        'app', 'models', 'concerns'
-      ).to_s
+      Rails.root.join('app/models/concerns').to_s
     ]
   end
 end
