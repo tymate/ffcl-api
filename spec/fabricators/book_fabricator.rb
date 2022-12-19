@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 Fabricator(:book) do
-  title               'MyString'
-  description         'MyText'
-  category            'MyString'
-  isbn                'MyString'
-  date_of_publication '2022-10-27'
+  title               { Faker::Book.title }
+  description         { Faker::Books::Lovecraft.paragraphs(number: 2) }
+  category            { Faker::Book.genre }
+  isbn                { Faker::Number.number(digits: 10) }
+  date_of_publication { Faker::Date.in_date_period }
 end
 
 # == Schema Information

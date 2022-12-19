@@ -14,8 +14,6 @@ AllCops:
     - 'db/migrate/*'
     - 'db/schema.rb'
     - 'node_modules/**/*'
-Bundler/OrderedGems:
-  Enabled: false
 Style/Documentation:
   Enabled: false
 Metrics/BlockLength:

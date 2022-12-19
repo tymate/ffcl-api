@@ -2,10 +2,11 @@
 
 Fabricator(:reading_session) do
   club
-  name                { Faker::Lorem.sentence }
+  name                { Faker::Lorem.word }
   next_step_date      nil
-  read_due_date       nil
-  submission_due_date nil
+  read_due_date       { 1.month.from_now }
+  submission_due_date { 10.days.from_now }
+  state { 'submission' }
 end
 
 # == Schema Information

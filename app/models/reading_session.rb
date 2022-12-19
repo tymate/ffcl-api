@@ -7,25 +7,43 @@ class ReadingSession < ApplicationRecord
   # has_many :reviews, dependent: :destroy, inverse_of: :reading_session
   has_many :propositions, dependent: :destroy, inverse_of: :reading_session
   has_many :books, through: :propositions
-  validates :name, :state, presence: true
+
+  validates :name, :state,
+            :submission_due_date, :read_due_date,
+            presence: true
+
+  validates :submission_due_date,
+            comparison: { greater_than: Time.zone.now }
+
+  validates :read_due_date,
+            comparison: { greater_than: :submission_due_date }
 
   state_machine :state, initial: :submission do
     state :submission, :draw, :reading, :conclusion, :archived
 
-    event :submit do
+    event :start_draw do
       transition submission: :draw
     end
 
-    event :draw do
+    event :start_reading do
       transition draw: :reading
     end
 
-    event :complete do
+    event :conclude do
       transition reading: :conclusion
     end
 
     event :archive do
       transition conclusion: :archived
+    end
+
+    after_transition submission: :draw do |reading_session|
+      DrawBookJob.perform_later(reading_session.id)
+    end
+
+    after_transition draw: :reading do |reading_session|
+      ConcludeReadingSessionJob.set(wait_until: reading_session.read_due_date)
+                               .perform_later(reading_session.id)
     end
   end
 end

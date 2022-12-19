@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 Fabricator(:proposition) do
-  reading_session nil
-  user            nil
-  book            nil
+  reading_session
+  user
+  book
 end
 
 # == Schema Information
