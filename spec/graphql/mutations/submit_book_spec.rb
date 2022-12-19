@@ -50,8 +50,21 @@ RSpec.describe Types::MutationType, type: :request do
       it 'allows user to join session and submit a book' do
         do_graphql_request
 
+        expect(WebMock).to have_requested(:get, %r{https://www.googleapis.com/books/v1/volumes/([0-9])}).once
         expect(json.dig('data', 'submitBook', 'proposition', 'user', 'id')).to eq(id_from_object(user))
         expect(json.dig('data', 'submitBook', 'proposition', 'book', 'googleBookId')).to eq(google_book_id)
+      end
+
+      context 'when book already exists' do
+        before { Fabricate(:book, google_book_id:) }
+
+        it 'allows user to join session and submit a book' do
+          do_graphql_request
+
+          expect(WebMock).not_to have_requested(:get, %r{https://www.googleapis.com/books/v1/volumes/([0-9])})
+          expect(json.dig('data', 'submitBook', 'proposition', 'user', 'id')).to eq(id_from_object(user))
+          expect(json.dig('data', 'submitBook', 'proposition', 'book', 'googleBookId')).to eq(google_book_id)
+        end
       end
     end
 

@@ -21,8 +21,11 @@ module Mutations
     private
 
     def create_book(google_book_id)
-      Book.create_with(book_params(google_book_id))
-          .find_or_create_by(google_book_id:)
+      book = Book.find_or_initialize_by(google_book_id:)
+      return book if book.persisted?
+
+      book.update(book_params(google_book_id))
+      book
     end
 
     def book_params(google_book_id)
