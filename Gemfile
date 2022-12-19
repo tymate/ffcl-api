@@ -25,6 +25,7 @@ gem 'pg', '~> 1.1'
 gem 'puma', '~> 5.0'
 gem 'rails', '~> 7.0.4'
 gem 'redis', '~> 4.0'
+gem 'rest-client'
 gem 'rspec_api_documentation'
 gem 'search_object_graphql'
 gem 'sidekiq', '~> 7.0'
@@ -63,4 +64,5 @@ group :test do # Use system testing [https://guides.rubyonrails.org/testing.html
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'webdrivers'
+  gem 'webmock'
 end

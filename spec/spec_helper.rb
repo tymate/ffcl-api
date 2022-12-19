@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'webmock/rspec'
+
 require 'simplecov'
 SimpleCov.start 'rails' do
   # add_group create a tab for the files in the specified path.
