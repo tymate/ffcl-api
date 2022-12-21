@@ -7,6 +7,8 @@ class Club < ApplicationRecord
 
   belongs_to :admin, class_name: 'User', optional: true
 
+  before_create { users << admin }
+
   def previous_reading_session
     reading_sessions.find_by(state: 'conclusion')
   end

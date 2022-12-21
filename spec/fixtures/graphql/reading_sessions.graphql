@@ -37,3 +37,30 @@ mutation submitBook($input: SubmitBookInput!) {
     }
   }
 }
+
+query fullDetailsReadingSession($sessionId: ID!) {
+  readingSession(id: $sessionId) {
+    id
+    name
+    submissionDueDate
+    readDueDate
+    nextStepDate
+    propositions {
+      totalCount
+      edges {
+        node {
+          id
+          user {
+            id
+            username
+          }
+          book {
+            id
+            title
+            googleBookId
+          }
+        }
+      }
+    }
+  }
+}
