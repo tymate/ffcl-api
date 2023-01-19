@@ -8,7 +8,9 @@ class ClubPolicy < ApplicationPolicy
   alias create? show?
 
   def create_session?
-    record.admin == user
+    return false unless record.admin == user
+
+    record.reading_sessions.where(state: %w[submission draw reading]).empty?
   end
 
   # relation_scope(&:all)

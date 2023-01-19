@@ -3,6 +3,8 @@
 class Book < ApplicationRecord
   has_many :propositions, dependent: :destroy, inverse_of: :books
   has_many :reading_sessions, dependent: :destroy, foreign_key: :selected_book_id, inverse_of: :books
+  has_many :author_books, dependent: :destroy
+  has_many :authors, through: :author_books
 
   validates :title, :isbn, presence: true
 end
@@ -19,4 +21,5 @@ end
 #  title               :string           not null
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
+#  google_book_id      :string           not null
 #

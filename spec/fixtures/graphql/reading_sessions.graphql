@@ -10,9 +10,30 @@ mutation createReadingSession($input: CreateReadingSessionInput!) {
     readingSession {
       id
       name
+      submissionDueDate
+      readDueDate
     }
     errors {
       ...errorFields
     }
   }
 } 
+
+mutation submitBook($input: SubmitBookInput!) {
+  submitBook(input: $input) {
+    proposition {
+      id
+      user{
+        id
+        }
+      book{
+        id
+        title
+        googleBookId
+      }
+    }
+    errors {
+      ...errorFields
+    }
+  }
+}
