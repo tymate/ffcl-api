@@ -20,27 +20,27 @@ RSpec.describe Types::QueryType, type: :request do
         do_graphql_request
       end
 
-      context 'when i want user clubs' do
+      context 'when I want user clubs' do
         let(:variables) do
           {
             myClubs: true
           }
         end
 
-        it "get clubs where i'm a member" do
+        it "get clubs where I'm a member" do
           expect(errors).to be_blank
           expect(json.dig('data', 'clubs', 'nodes').size).to eq(2)
         end
       end
 
-      context 'when i want other clubs' do
+      context 'when I want other clubs' do
         let(:variables) do
           {
             otherClubs: true
           }
         end
 
-        it "get clubs where i'm a member" do
+        it "get clubs where I'm a member" do
           expect(errors).to be_blank
           expect(json.dig('data', 'clubs', 'nodes').size).to eq(3)
         end
