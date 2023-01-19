@@ -7,6 +7,14 @@ Fabricator(:club) do
   admin           { Fabricate(:user) }
 end
 
+Fabricator(:club_with_users, from: :club) do
+  after_create do |club|
+    5.times do
+      club.users << Fabricate(:user)
+    end
+  end
+end
+
 # == Schema Information
 #
 # Table name: clubs
