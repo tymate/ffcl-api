@@ -30,6 +30,9 @@ RSpec.describe Types::MutationType, type: :request do
 
       it 'creates a new session' do
         expect { do_graphql_request }.to change(club.reload.reading_sessions, :count).by(1)
+
+        binding.pry
+
         expect(json.dig('data', query, 'readingSession', 'name')).to eq(name)
       end
 

@@ -5,7 +5,7 @@ module Types
     description 'Root queries'
 
     # Show queries
-    SHOW_QUERIES_FOR_SINGLE_RECORDS = %w[user club].freeze
+    SHOW_QUERIES_FOR_SINGLE_RECORDS = %w[user club reading_session].freeze
 
     # Custom show queries
     field :current_user, Types::UserType, authorize: true, null: true

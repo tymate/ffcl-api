@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :propositions, dependent: :destroy, inverse_of: :user
   has_many :club_users, dependent: :destroy
   has_many :clubs, through: :club_users
+  has_many :reading_sessions, through: :clubs
 
   validates :email, :username, presence: true
 end
