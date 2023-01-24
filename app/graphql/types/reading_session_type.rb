@@ -4,7 +4,7 @@ module Types
   class ReadingSessionType < Types::BaseType
     description 'A reading session'
 
-    global_id_field :id
+    field :id, ID, null: false
     field :club, Types::ClubType, null: false
     field :state, String, null: false
     field :selected_book, Types::BookType, null: true

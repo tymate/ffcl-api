@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe Types::QueryType, type: :request do
   describe 'currentUser' do
     let(:query) { 'fullDetailsReadingSession' }
-    let(:variables) { { sessionId: id_from_object(reading_session) } }
+    let(:variables) { { readingSessionId: id_from_object(reading_session) } }
 
     let(:club) do
       Fabricate(:club).tap { _1.users << Fabricate.times(5, :user) }
@@ -23,7 +23,6 @@ RSpec.describe Types::QueryType, type: :request do
 
       it 'returns details of the reading session' do
         do_graphql_request
-
         expect(errors).to be_blank
         expect(json.dig('data', 'readingSession', 'propositions', 'totalCount'))
           .to eq(reading_session.propositions.count)
