@@ -17,10 +17,10 @@ if Rails.env.development?
   )
 
   User.create_with(
-    email: 'maxim.j@tymate.com',
+    email: 'kevin.j@tymate.com',
     username: 'mj',
-    password: 'x'
-  ).find_or_create_by(email: 'maxim.j@tymate.com')
+    password: 'password'
+  ).find_or_create_by(email: 'kevin.j@tymate.com')
 
   Club.create_with(
     description: 'Club 1 description',

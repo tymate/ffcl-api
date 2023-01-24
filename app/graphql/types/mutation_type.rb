@@ -12,5 +12,6 @@ module Types
     field :delete_club, mutation: Mutations::DeleteClub
     field :create_reading_session, mutation: Mutations::CreateReadingSession
     field :submit_book, mutation: Mutations::SubmitBook
+    field :quit_club, mutation: Mutations::QuitClub
   end
 end

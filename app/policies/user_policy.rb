@@ -13,7 +13,7 @@ class UserPolicy < ApplicationPolicy
     true
   end
 
-  # relation_scope do |scope|
-  #   scope.all
-  # end
+  def quit_club?
+    user == record
+  end
 end

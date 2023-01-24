@@ -55,6 +55,20 @@ mutation joinClub($input: JoinClubInput!) {
   }
 }
 
+mutation quitClub($input: QuitClubInput!) {
+  quitClub(input: $input) {
+    club {
+      users {
+        nodes {
+          email
+          username
+        }
+      }
+    }
+  }
+}
+
+
 mutation invitationClub($input: InvitationClubInput!) {
   invitationClub(input: $input) {
     sent

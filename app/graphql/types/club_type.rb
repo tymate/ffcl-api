@@ -9,5 +9,6 @@ module Types
     field :description, String, null: false
     field :admin, Types::UserType
     field :invitation_code, String, null: false
+    field :users, Types::UserType.connection_type, null: false
   end
 end

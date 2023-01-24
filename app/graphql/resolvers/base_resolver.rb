@@ -5,7 +5,6 @@ require 'search_object/plugin/graphql'
 
 module Resolvers
   class BaseResolver < GraphQL::Schema::Resolver
-    include SearchObject.module(:graphql)
     include ActionPolicy::GraphQL::Behaviour
     include CurrentUserContext
     include ActionPolicyExtensions
