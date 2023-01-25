@@ -13,5 +13,6 @@ module Types
     field :create_reading_session, mutation: Mutations::CreateReadingSession
     field :submit_book, mutation: Mutations::SubmitBook
     field :quit_club, mutation: Mutations::QuitClub
+    field :invite_user, mutation: Mutations::InviteUser
   end
 end
