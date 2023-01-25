@@ -16,11 +16,30 @@ query club($clubId: ID!) {
     id
     label
     invitationCode
+    admin {
+      id
+      username
+      email
+    }
     users {
       edges {
         node {
+          id
           username
           email
+        }
+      }
+    }
+    readingSessions {
+      edges {
+        node {
+          name
+          state
+          selectedBook {
+            title
+          }
+          submissionDueDate
+          readDueDate
         }
       }
     }

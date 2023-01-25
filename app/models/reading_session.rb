@@ -7,6 +7,7 @@ class ReadingSession < ApplicationRecord
   # has_many :reviews, dependent: :destroy, inverse_of: :reading_session
   has_many :propositions, dependent: :destroy, inverse_of: :reading_session
   has_many :books, through: :propositions
+  has_many :users, through: :club
 
   validates :name, :state,
             :submission_due_date, :read_due_date,
@@ -45,6 +46,21 @@ class ReadingSession < ApplicationRecord
       ConcludeReadingSessionJob.set(wait_until: reading_session.read_due_date)
                                .perform_later(reading_session.id)
     end
+  end
+
+  def next_step_date
+    case state
+    when 'submission'
+      submission_due_date
+    when 'draw', 'reading'
+      read_due_date
+    end
+  end
+
+  def selected_book_submitters
+    return if %w[submission draw].include?(state)
+
+    User.joins(:propositions).where(propositions: { session: self, book: selected_book })
   end
 end
 

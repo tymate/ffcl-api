@@ -12,7 +12,7 @@ module Mutations
     def resolve(club:, email:)
       authorize! club, to: :invitation?
 
-      UserMailer.invitation_club(email, club).deliver_later
+      UserMailer.invitation_club(email:, club:).deliver_later
 
       { sent: true }
     end

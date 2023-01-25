@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      /* Style CSS pour le contenu du mail */
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #f5f5f5;
+        padding: 50px;
+      }
+      h1 {
+        color: #333;
+        margin-bottom: 30px;
+      }
+      p {
+        font-size: 18px;
+        line-height: 1.5;
+        margin-bottom: 20px;
+      }
+      .code-invitation {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        font-weight: bold;
+        text-align: center;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+      }
+      .code-invitation h2{
+        margin: 0;
+        font-size: 24px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Invitation au club de lecture</h1>
+    <p>Bonjour,</p>
+    <p>Nous avons le plaisir de vous inviter à rejoindre notre club : <%= club.label %></p>
+    <p>Pour vous inscrire, veuillez entrer le code d'invitation suivant :</p>
+    <div class="code-invitation">
+      <h2> <%= club.invitation_code %></h2>
+    </div>
+  </body>
+</html>

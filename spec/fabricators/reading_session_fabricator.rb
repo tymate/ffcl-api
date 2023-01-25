@@ -1,13 +1,18 @@
 # frozen_string_literal: true
 
 Fabricator(:reading_session) do
+  name { Faker::Book.title }
+  submission_due_date { 1.day.from_now }
+  read_due_date { 2.days.from_now }
   club
-  name                { Faker::Lorem.word }
-  next_step_date      nil
-  read_due_date       { 1.month.from_now }
-  submission_due_date { 10.days.from_now }
-  state { 'submission' }
 end
+
+# club
+# name                { Faker::Lorem.word }
+# next_step_date      nil
+# read_due_date       { 1.month.from_now }
+# submission_due_date { 10.days.from_now }
+# state { 'submission' }
 
 # == Schema Information
 #
