@@ -19,8 +19,6 @@ module Mutations
         users: [current_user]
       )
 
-      club.users << current_user
-
       { club: }
     end
   end
