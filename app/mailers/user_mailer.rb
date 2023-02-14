@@ -8,4 +8,10 @@ class UserMailer < ApplicationMailer
     }
     send_mail(recipients: email, subject:, html:)
   end
+
+  def invite_user(email:)
+    subject = 'Invitation à créer un compte'
+    html = render partial: 'user_mailer/invite_user'
+    send_mail(recipients: email, subject:, html:)
+  end
 end

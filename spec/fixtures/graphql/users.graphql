@@ -78,6 +78,12 @@ mutation invitationClub($input: InvitationClubInput!) {
   }
 }
 
+mutation inviteUser($input: InviteUserInput!) {
+  inviteUser(input: $input) {
+    sent
+  }
+}
+
 mutation updateClub($input: UpdateClubInput!) {
   updateClub(input: $input) {
     club {
