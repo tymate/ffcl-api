@@ -5,6 +5,11 @@ Fabricator(:reading_session) do
   submission_due_date { 1.day.from_now }
   read_due_date { 2.days.from_now }
   club
+  state { 'submission' }
+end
+
+Fabricator(:reading_session_where_state_is_conclude, from: :reading_session) do
+  state { 'conclusion' }
 end
 
 # club

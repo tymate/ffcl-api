@@ -30,7 +30,20 @@ query club($clubId: ID!) {
         }
       }
     }
-    readingSessions {
+    currentReadingSessions {
+      edges {
+        node {
+          name
+          state
+          selectedBook {
+            title
+          }
+          submissionDueDate
+          readDueDate
+        }
+      }
+    }
+    previousReadingSessions {
       edges {
         node {
           name
