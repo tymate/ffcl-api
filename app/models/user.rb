@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :club_users, dependent: :destroy
   has_many :clubs, through: :club_users
   has_many :reading_sessions, through: :clubs
+  has_many :reviews, dependent: :destroy
 
   validates :email, :username, presence: true
 end

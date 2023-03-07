@@ -4,7 +4,7 @@ class ReadingSession < ApplicationRecord
   belongs_to :club
   belongs_to :selected_book, class_name: 'Book', optional: true
 
-  # has_many :reviews, dependent: :destroy, inverse_of: :reading_session
+  has_many :reviews, dependent: :destroy
   has_many :propositions, dependent: :destroy, inverse_of: :reading_session
   has_many :books, through: :propositions
   has_many :users, through: :club

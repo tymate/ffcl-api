@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_15_143215) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_15_105240) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -127,6 +127,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_15_143215) do
     t.index ["selected_book_id"], name: "index_reading_sessions_on_selected_book_id"
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.integer "rating", null: false
+    t.text "comment"
+    t.bigint "user_id", null: false
+    t.bigint "reading_session_id", null: false
+    t.bigint "book_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_reviews_on_book_id"
+    t.index ["reading_session_id"], name: "index_reviews_on_reading_session_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -151,4 +164,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_15_143215) do
   add_foreign_key "propositions", "users"
   add_foreign_key "reading_sessions", "books", column: "selected_book_id"
   add_foreign_key "reading_sessions", "clubs"
+  add_foreign_key "reviews", "books"
+  add_foreign_key "reviews", "reading_sessions"
+  add_foreign_key "reviews", "users"
 end
