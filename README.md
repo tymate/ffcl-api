@@ -6,13 +6,9 @@ FFCL-API is a Ruby on Rails and GraphQL-based API for managing book clubs and bo
 
 1.  Clone the repository:
 
-bashCopy code
-
 `git clone https://github.com/tymate/ffcl-api.git`
 
 2.  Navigate to the directory:
-
-bashCopy code
 
 `cd ffcl-api`
 
