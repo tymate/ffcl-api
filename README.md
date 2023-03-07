@@ -14,21 +14,15 @@ FFCL-API is a Ruby on Rails and GraphQL-based API for managing book clubs and bo
 
 3.  Install dependencies:
 
-Copy code
-
 `bundle install`
 
 ## Usage :computer:
 
 1.  Start the server:
 
-Copy code
-
 `rails server`
 
 2.  Access the API using the following URL:
-
-bashCopy code
 
 `http://localhost:3000/graphql_playground`
 
