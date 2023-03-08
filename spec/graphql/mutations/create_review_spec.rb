@@ -5,16 +5,15 @@ require 'rails_helper'
 RSpec.describe Types::MutationType, type: :request do
   let(:query) { 'createReview' }
   let(:club) { Fabricate(:club_with_users) }
-  let(:reading_session) { Fabricate(:reading_session, state: 'reading') }
+  let(:reading_session) { Fabricate(:reading_session_with_selected_book) }
   let(:book) { Fabricate(:book) }
+
   let(:variables) do
     {
       input: {
         readingSessionId: id_from_object(reading_session),
         rating: 5,
-        comment: Faker::Lorem.sentence,
-        userId: id_from_object(user),
-        bookId: id_from_object(book)
+        comment: Faker::Lorem.sentence
       }
     }
   end
@@ -33,11 +32,11 @@ RSpec.describe Types::MutationType, type: :request do
     end
   end
 
-  # describe 'when unauthenticated' do
-  #   before do
-  #     do_graphql_request
-  #   end
+  describe 'when unauthenticated' do
+    before do
+      do_graphql_request
+    end
 
-  #   include_examples 'when unauthenticated'
-  # end
+    include_examples 'when unauthenticated'
+  end
 end
