@@ -11,4 +11,8 @@ class ReadingSessionPolicy < ApplicationPolicy
 
     record.state == 'submission'
   end
+
+  def create_review?
+    true if record.state == 'reading'
+  end
 end

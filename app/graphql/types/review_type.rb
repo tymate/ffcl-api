@@ -8,7 +8,7 @@ module Types
     field :rating, Integer, null: false
     field :comment, String, null: true
     field :reading_session, Types::ReadingSessionType, null: false
-    field :user, Types::UserType, null: false
-    field :book, Types::BookType, null: false
+    field :user, Types::UserType, null: true
+    field :book, Types::BookType, null: true
   end
 end

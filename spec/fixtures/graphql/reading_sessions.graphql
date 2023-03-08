@@ -5,6 +5,18 @@ fragment errorFields on ValidationError {
   error
 }
 
+mutation createReview($input: CreateReviewInput!) {
+  createReview(input: $input) {
+    review {
+      rating
+      comment
+    }
+        errors {
+      ...errorFields
+    }
+  }
+}
+
 mutation createReadingSession($input: CreateReadingSessionInput!) {
   createReadingSession(input: $input) {
     readingSession {
@@ -73,5 +85,3 @@ query fullDetailsReadingSession($readingSessionId: ID!) {
     }
   }
 }
-
-
