@@ -32,4 +32,23 @@ if Rails.env.development?
     admin: User.first
   ).find_or_create_by(user: User.first, club: Club.first)
 
+  ReadingSession.create_with(
+    club: Club.first,
+    name: 'Reading Session 1',
+    submission_due_date: 10.days.from_now,
+    read_due_date: 1.month.from_now
+  ).find_or_create_by(state: 'submission')
+
+  Book.create_with(
+    title: 'Book 1',
+    isbn: '978-3-16-148410-0'
+  ).find_or_create_by(google_book_id: '1')
+
+  Review.create_with(
+    user: User.first,
+    book: Book.first,
+    rating: 5,
+    comment: 'This is a comment'
+  ).find_or_create_by(reading_session: ReadingSession.first)
+
 end

@@ -7,6 +7,11 @@ Fabricator(:reading_session) do
   club
 end
 
+Fabricator(:reading_session_with_selected_book, from: :reading_session) do
+  state { 'reading' }
+  selected_book { Fabricate(:book) }
+end
+
 # club
 # name                { Faker::Lorem.word }
 # next_step_date      nil
