@@ -15,7 +15,6 @@ module Types
     field :previous_reading_session, Types::ReadingSessionType.connection_type, null: false
 
     def current_reading_session
-      # where state is 'submission', 'draw' or 'reading'
       object.reading_sessions.where(state: %w[submission draw reading]).first
     end
 
