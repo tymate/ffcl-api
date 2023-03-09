@@ -33,6 +33,7 @@ query club($clubId: ID!) {
     readingSessions {
       edges {
         node {
+          id
           name
           state
           selectedBook {
@@ -43,5 +44,23 @@ query club($clubId: ID!) {
         }
       }
     }
+    currentReadingSession {
+      id
+      name
+      state
+      selectedBook {
+        title
+      }
+    }
+    previousReadingSession {
+      nodes {
+        name
+        state
+        selectedBook {
+          title
+        }
+      }
+    }
   }
 }
+

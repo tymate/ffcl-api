@@ -11,7 +11,7 @@ mutation createReview($input: CreateReviewInput!) {
       rating
       comment
     }
-        errors {
+    errors {
       ...errorFields
     }
   }
