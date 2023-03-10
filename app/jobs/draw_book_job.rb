@@ -6,7 +6,7 @@ class DrawBookJob < ApplicationJob
   def perform(session_id)
     reading_session = ReadingSession.find(session_id)
 
-    selected_book = reading_session.books.sample # TO DO implement a more complex algorythm for the draw
+    selected_book = reading_session.propositions.sample&.book
     reading_session.update(selected_book:)
 
     reading_session.club.previous_reading_session&.archive
