@@ -15,4 +15,8 @@ class ReadingSessionPolicy < ApplicationPolicy
   def create_review?
     true if record.state == 'reading'
   end
+
+  def quit?
+    record.users.include?(user)
+  end
 end

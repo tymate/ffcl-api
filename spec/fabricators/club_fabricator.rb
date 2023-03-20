@@ -15,6 +15,12 @@ Fabricator(:club_with_users, from: :club) do
   end
 end
 
+Fabricator(:club_with_session, from: :club) do
+  after_create do |club|
+    club.reading_sessions << Fabricate(:reading_session)
+  end
+end
+
 # == Schema Information
 #
 # Table name: clubs

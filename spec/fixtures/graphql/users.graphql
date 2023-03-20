@@ -65,9 +65,24 @@ mutation quitClub($input: QuitClubInput!) {
         }
       }
     }
+    errors {
+      ...errorFields
+    }
   }
 }
 
+mutation quitSession($input: QuitSessionInput!) {
+  quitSession(input: $input) {
+    session {
+      users {
+        nodes {
+          email
+          username
+        }
+      }
+    }
+  }
+}
 
 mutation invitationClub($input: InvitationClubInput!) {
   invitationClub(input: $input) {
