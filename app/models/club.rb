@@ -10,6 +10,10 @@ class Club < ApplicationRecord
   def previous_reading_session
     reading_sessions.find_by(state: 'conclusion')
   end
+
+  def current_reading_session
+    reading_sessions.find_by(state: %w[submission draw reading])
+  end
 end
 
 # == Schema Information

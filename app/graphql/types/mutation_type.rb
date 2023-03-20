@@ -14,5 +14,6 @@ module Types
     field :submit_book, mutation: Mutations::SubmitBook
     field :quit_club, mutation: Mutations::QuitClub
     field :invite_user, mutation: Mutations::InviteUser
+    field :create_review, mutation: Mutations::CreateReview
   end
 end

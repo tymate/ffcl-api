@@ -12,6 +12,15 @@ Fabricator(:reading_session_where_state_is_conclude, from: :reading_session) do
   state { 'conclusion' }
 end
 
+Fabricator(:reading_session_with_selected_book, from: :reading_session) do
+  state { 'reading' }
+  selected_book { Fabricate(:book) }
+end
+
+Fabricator(:reading_session_at_conclusion_state, from: :reading_session) do
+  state { 'conclusion' }
+end
+
 # club
 # name                { Faker::Lorem.word }
 # next_step_date      nil
