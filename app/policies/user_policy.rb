@@ -10,7 +10,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def quit_club?
-    true
+    record.users.include?(user)
   end
 
   alias_rule :update?, to: :show

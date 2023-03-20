@@ -65,6 +65,9 @@ mutation quitClub($input: QuitClubInput!) {
         }
       }
     }
+    errors {
+      ...errorFields
+    }
   }
 }
 

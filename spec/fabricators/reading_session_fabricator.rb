@@ -16,6 +16,14 @@ Fabricator(:reading_session_at_conclusion_state, from: :reading_session) do
   state { 'conclusion' }
 end
 
+Fabricator(:reading_session_with_users, from: :reading_session) do
+  after_create do |session|
+    5.times do
+      session.users << Fabricate(:user)
+    end
+  end
+end
+
 # club
 # name                { Faker::Lorem.word }
 # next_step_date      nil

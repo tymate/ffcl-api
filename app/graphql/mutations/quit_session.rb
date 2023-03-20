@@ -9,7 +9,7 @@ module Mutations
     field :session, Types::ReadingSessionType, null: true
 
     def resolve(session:)
-      authorize! User, to: :quit_session?
+      authorize! ReadingSession, to: :quit?
 
       session.users.delete(current_user) if session.users.include?(current_user)
 
