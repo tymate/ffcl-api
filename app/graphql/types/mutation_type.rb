@@ -15,5 +15,6 @@ module Types
     field :quit_club, mutation: Mutations::QuitClub
     field :invite_user, mutation: Mutations::InviteUser
     field :create_review, mutation: Mutations::CreateReview
+    field :quit_session, mutation: Mutations::QuitSession
   end
 end

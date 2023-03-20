@@ -9,7 +9,7 @@ module Mutations
     field :club, Types::ClubType, null: true
 
     def resolve(club:)
-      # authorize! User, to: :quit_club?
+      authorize! User, to: :quit_club?
 
       club.users.delete(current_user) if club.users.include?(current_user) && current_user != club.admin
 

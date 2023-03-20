@@ -5,15 +5,14 @@ class UserPolicy < ApplicationPolicy
     user == record
   end
 
-  def update?
-    user == record
-  end
-
   def join_club?
     true
   end
 
   def quit_club?
-    user == record
+    true
   end
+
+  alias_rule :update?, to: :show
+  alias_rule :quit_session?, to: :quit_club?
 end
