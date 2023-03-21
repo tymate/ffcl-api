@@ -17,7 +17,6 @@ mutation createReview($input: CreateReviewInput!) {
   }
 }
 
-# ne fonctionne pas
 mutation joinSession($input: JoinSessionInput!) {
   joinSession(input: $input) {
     readingSession {
