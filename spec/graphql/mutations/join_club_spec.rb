@@ -14,8 +14,10 @@ RSpec.describe Types::MutationType, type: :request do
   end
 
   it_behaves_like 'with standard user' do
-    it 'joins the club' do
-      expect { do_graphql_request }.to change(club.users, :count).by(1)
+    context 'when the user is not part of the club' do
+      it 'joins the club' do
+        expect { do_graphql_request }.to change(club.users, :count).by(1)
+      end
     end
 
     context 'when the user is already a member' do
