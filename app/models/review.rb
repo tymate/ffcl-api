@@ -9,10 +9,6 @@ class Review < ApplicationRecord
     only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 5
   }
   validates :comment, length: { maximum: 255 }
-
-  def update_book_rating
-    book.update(rating: book.reviews.average(:rating).round)
-  end
 end
 
 # == Schema Information

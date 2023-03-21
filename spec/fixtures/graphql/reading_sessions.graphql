@@ -57,6 +57,7 @@ query fullDetailsReadingSession($readingSessionId: ID!) {
     submissionDueDate
     readDueDate
     nextStepDate
+    sessionRating
     propositions {
       totalCount
       edges {
@@ -80,6 +81,19 @@ query fullDetailsReadingSession($readingSessionId: ID!) {
           id
           email
           username
+        }
+      }
+    }
+    reviews {
+      edges {
+        node {
+          id
+          rating
+          comment
+          user {
+            id
+            username
+          }
         }
       }
     }

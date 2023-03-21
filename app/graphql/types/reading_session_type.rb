@@ -18,5 +18,10 @@ module Types
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
     field :reviews, Types::ReviewType.connection_type, null: false
+    field :session_rating, Integer, null: true
+
+    def session_rating
+      object.reviews.average(:rating).to_i
+    end
   end
 end

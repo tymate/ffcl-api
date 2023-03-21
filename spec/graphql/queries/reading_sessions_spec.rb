@@ -27,6 +27,13 @@ RSpec.describe Types::QueryType, type: :request do
         expect(json.dig('data', 'readingSession', 'propositions', 'totalCount'))
           .to eq(reading_session.propositions.count)
       end
+
+      it 'update the rating when multiple reviews are present' do
+        reading_session.reviews << Fabricate.times(5, :review, reading_session:, user:)
+        do_graphql_request
+        expect(errors).to be_blank
+        expect(json.dig('data', 'readingSession', 'sessionRating')).to eq(reading_session.reviews.average(:rating).to_i)
+      end
     end
 
     describe 'when unauthenticated' do
