@@ -8,7 +8,7 @@ module Types
     field :register, mutation: Mutations::Register
     field :invite_user, mutation: Mutations::InviteUser
 
-    #club
+    # club
     field :create_club, mutation: Mutations::CreateClub
     field :update_club, mutation: Mutations::UpdateClub
     field :quit_club, mutation: Mutations::QuitClub

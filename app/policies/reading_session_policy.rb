@@ -21,6 +21,6 @@ class ReadingSessionPolicy < ApplicationPolicy
   end
 
   def destroy?
-    record.users.include?(user) 
+    record.users.include?(user)
   end
 end

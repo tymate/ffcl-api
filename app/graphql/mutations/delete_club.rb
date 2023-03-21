@@ -15,4 +15,4 @@ module Mutations
       { deleted: true }
     end
   end
-end 
+end
