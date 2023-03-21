@@ -6,5 +6,4 @@ class UserPolicy < ApplicationPolicy
   end
 
   alias_rule :update?, to: :show
-  alias_rule :quit_session?, to: :quit_club?
 end

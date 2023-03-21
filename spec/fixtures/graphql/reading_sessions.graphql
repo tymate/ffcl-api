@@ -17,6 +17,36 @@ mutation createReview($input: CreateReviewInput!) {
   }
 }
 
+# ne fonctionne pas
+mutation joinSession($input: JoinSessionInput!) {
+  joinSession(input: $input) {
+    readingSession {
+      id
+      name
+      submissionDueDate
+      readDueDate
+    }
+    errors {
+      ...errorFields
+    }
+  }
+}
+
+# ne fonctionne pas
+mutation quitSession($input: QuitSessionInput!) {
+  quitSession(input: $input) {
+    readingSession {
+      id
+      name
+      submissionDueDate
+      readDueDate
+    }
+    errors {
+      ...errorFields
+    }
+  }
+}
+
 mutation createReadingSession($input: CreateReadingSessionInput!) {
   createReadingSession(input: $input) {
     readingSession {

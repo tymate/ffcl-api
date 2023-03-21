@@ -6,14 +6,14 @@ module Mutations
 
     argument :session_id, ID, required: true, loads: Types::ReadingSessionType
 
-    field :session, Types::ReadingSessionType, null: true
+    field :deleted, Boolean, null: false
 
     def resolve(session:)
       authorize! ReadingSession, to: :quit?
 
       session.users.delete(current_user) if session.users.include?(current_user)
 
-      { session: }
+      { deleted: }
     end
   end
 end
