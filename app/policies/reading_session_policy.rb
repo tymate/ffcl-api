@@ -19,4 +19,8 @@ class ReadingSessionPolicy < ApplicationPolicy
   def quit?
     record.users.include?(user)
   end
+
+  def destroy?
+    record.users.include?(user) 
+  end
 end
