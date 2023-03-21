@@ -15,5 +15,5 @@ RSpec.describe Types::MutatationType, type: :request do
   end
 
   before { do_graphql_request }
+end
 
-  context 'when authenticated and part of the session'
