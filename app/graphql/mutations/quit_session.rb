@@ -4,16 +4,15 @@ module Mutations
   class QuitSession < BaseMutation
     description 'Quit a session'
 
-    argument :session_id, ID, required: true, loads: Types::ReadingSessionType
+    argument :reading_session_id, ID, required: true, loads: Types::ReadingSessionType
 
-    field :deleted, Boolean, null: false
+    field :reading_session, Types::ReadingSessionType, null: true
 
-    def resolve(session:)
-      authorize! ReadingSession, to: :quit?
+    def resolve(reading_session:)
+      authorize! reading_session, to: :quit?
+      reading_session.users.delete(current_user)
 
-      session.users.delete(current_user) if session.users.include?(current_user)
-
-      { deleted: }
+      { reading_session: }
     end
   end
 end

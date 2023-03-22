@@ -31,7 +31,6 @@ mutation joinSession($input: JoinSessionInput!) {
   }
 }
 
-# ne fonctionne pas
 mutation quitSession($input: QuitSessionInput!) {
   quitSession(input: $input) {
     readingSession {

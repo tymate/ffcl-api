@@ -6,7 +6,7 @@ class ReadingSession < ApplicationRecord
 
   has_many :reviews, dependent: :destroy
   has_many :propositions, dependent: :destroy, inverse_of: :reading_session
-  # has_many :books, through: :propositions
+  has_many :books, through: :propositions
   has_many :users, through: :propositions, source: :user
 
   validates :name, :state,

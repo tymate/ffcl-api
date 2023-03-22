@@ -22,6 +22,9 @@ SimpleCov.start 'rails' do
   add_filter('app/graphql/types/order_direction_type.rb')
   add_filter('app/graphql/resolvers/base_resolver.rb')
   add_filter('app/graphql/ffcl_api_schema.rb')
+  add_filter('app/graphql/mutations/resolvers/validation.rb')
+  add_filter('app/controllers/graphql_controller.rb')
+  add_filter('app/graphql/action_policy_extensions.rb')
 end
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate

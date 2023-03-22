@@ -9,7 +9,7 @@ module Mutations
     field :reading_session, Types::ReadingSessionType, null: true
 
     def resolve(reading_session:)
-      # authorize! ReadingSession, to: :join?
+      authorize! reading_session, to: :join?
       reading_session.users << current_user
 
       { reading_session: }
