@@ -16,6 +16,10 @@ class ReadingSessionPolicy < ApplicationPolicy
     true if record.state == 'reading'
   end
 
+  def join?
+    record.users.exclude?(user) && record.state == 'submission'
+  end
+
   def quit?
     record.users.include?(user)
   end

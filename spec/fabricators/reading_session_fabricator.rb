@@ -7,6 +7,19 @@ Fabricator(:reading_session) do
   club
 end
 
+# reading_session with propositions at submission state
+Fabricator(:reading_session_with_propositions, from: :reading_session) do
+  after_create do |session|
+    5.times do
+      session.propositions << Fabricate(:proposition)
+    end
+  end
+end
+
+Fabricator(:reading_session_with_submission_state, from: :reading_session) do
+  state { 'submission' }
+end
+
 Fabricator(:reading_session_with_selected_book, from: :reading_session) do
   state { 'reading' }
   selected_book { Fabricate(:book) }
