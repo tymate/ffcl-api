@@ -31,6 +31,15 @@ mutation joinSession($input: JoinSessionInput!) {
   }
 }
 
+mutation deleteSession($input: DeleteSessionInput!) {
+  deleteSession(input: $input) {
+    deleted
+    errors {
+      ...errorFields
+    }
+  }
+}
+
 mutation quitSession($input: QuitSessionInput!) {
   quitSession(input: $input) {
     readingSession {
