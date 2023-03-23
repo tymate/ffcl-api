@@ -21,7 +21,7 @@ module Types
     # field :update_session, mutation: Mutations::UpdateReadingSession
     field :quit_session, mutation: Mutations::QuitSession
     field :join_session, mutation: Mutations::JoinSession
-    # field :delete_session, mutation: Mutation::DeleteReadingSession
+    field :delete_session, mutation: Mutations::DeleteSession
     field :submit_book, mutation: Mutations::SubmitBook
 
     # review

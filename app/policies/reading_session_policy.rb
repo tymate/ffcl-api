@@ -24,7 +24,7 @@ class ReadingSessionPolicy < ApplicationPolicy
     record.users.include?(user)
   end
 
-  def destroy?
-    record.users.include?(user)
+  def delete?
+    record.club.admin == user
   end
 end

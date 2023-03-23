@@ -9,7 +9,7 @@ module Mutations
     field :deleted, Boolean, null: false
 
     def resolve(reading_session:)
-      authorize! reading_session, to: :destroy?
+      authorize! reading_session, to: :delete?
       reading_session.destroy!
 
       { deleted: true }
