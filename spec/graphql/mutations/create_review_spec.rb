@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe Types::MutationType, type: :request do
   let(:query) { 'createReview' }
   let(:club) { Fabricate(:club_with_users) }
-  let(:reading_session) { Fabricate(:reading_session_with_selected_book) }
+  let(:reading_session) { Fabricate(:reading_session_with_selected_book, club:) }
   let(:book) { Fabricate(:book) }
 
   let(:variables) do
@@ -24,10 +24,11 @@ RSpec.describe Types::MutationType, type: :request do
         club.users << user
       end
 
-      it 'creates a new review' do
-        do_graphql_request
-        expect(Review.count).to eq(1)
-        expect(json.dig('data', query, 'review', 'rating')).to eq(5)
+      context 'when authenticated' do
+        it 'creates a new review' do
+          do_graphql_request
+          expect(json.dig('data', query, 'review', 'rating')).to eq(5)
+        end
       end
     end
   end

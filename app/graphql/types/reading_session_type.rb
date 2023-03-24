@@ -13,10 +13,15 @@ module Types
     field :submission_due_date, GraphQL::Types::ISO8601DateTime, null: false
     field :read_due_date, GraphQL::Types::ISO8601DateTime, null: false
     field :next_step_date, GraphQL::Types::ISO8601DateTime, null: true
-    field :users, Types::UserType.connection_type, null: false
+    field :users, Types::UserType.connection_type, null: true
     field :propositions, Types::PropositionType.connection_type, null: true
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
-    field :reviews, Types::ReviewType.connection_type, null: false
+    field :reviews, Types::ReviewType.connection_type, null: true
+    field :session_rating, Integer, null: true
+
+    def session_rating
+      object.reviews.average(:rating).to_i
+    end
   end
 end

@@ -15,4 +15,16 @@ class ReadingSessionPolicy < ApplicationPolicy
   def create_review?
     true if record.state == 'reading'
   end
+
+  def join?
+    record.users.exclude?(user) && record.state == 'submission'
+  end
+
+  def quit?
+    record.users.include?(user)
+  end
+
+  def delete?
+    record.club.admin == user
+  end
 end

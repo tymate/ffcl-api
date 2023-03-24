@@ -17,6 +17,43 @@ mutation createReview($input: CreateReviewInput!) {
   }
 }
 
+mutation joinSession($input: JoinSessionInput!) {
+  joinSession(input: $input) {
+    readingSession {
+      id
+      name
+      submissionDueDate
+      readDueDate
+    }
+    errors {
+      ...errorFields
+    }
+  }
+}
+
+mutation deleteSession($input: DeleteSessionInput!) {
+  deleteSession(input: $input) {
+    deleted
+    errors {
+      ...errorFields
+    }
+  }
+}
+
+mutation quitSession($input: QuitSessionInput!) {
+  quitSession(input: $input) {
+    readingSession {
+      id
+      name
+      submissionDueDate
+      readDueDate
+    }
+    errors {
+      ...errorFields
+    }
+  }
+}
+
 mutation createReadingSession($input: CreateReadingSessionInput!) {
   createReadingSession(input: $input) {
     readingSession {
@@ -57,6 +94,7 @@ query fullDetailsReadingSession($readingSessionId: ID!) {
     submissionDueDate
     readDueDate
     nextStepDate
+    sessionRating
     propositions {
       totalCount
       edges {
@@ -80,6 +118,19 @@ query fullDetailsReadingSession($readingSessionId: ID!) {
           id
           email
           username
+        }
+      }
+    }
+    reviews {
+      edges {
+        node {
+          id
+          rating
+          comment
+          user {
+            id
+            username
+          }
         }
       }
     }

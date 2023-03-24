@@ -65,9 +65,11 @@ mutation quitClub($input: QuitClubInput!) {
         }
       }
     }
+    errors {
+      ...errorFields
+    }
   }
 }
-
 
 mutation invitationClub($input: InvitationClubInput!) {
   invitationClub(input: $input) {

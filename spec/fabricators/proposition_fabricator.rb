@@ -13,7 +13,7 @@ end
 #  id                 :bigint           not null, primary key
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
-#  book_id            :bigint           not null
+#  book_id            :bigint
 #  reading_session_id :bigint           not null
 #  user_id            :bigint           not null
 #

@@ -1,6 +1,6 @@
 # FFCL-API :closed_book:
 
-FFCL-API is a Ruby on Rails and GraphQL-based API for managing book clubs and books. It allows creating, reading, updating, and deleting book clubs and books, as well as adding and removing members and reviews from book clubs.
+FFCL-API is a Ruby on Rails and GraphQL-based API for managing book clubs and books. It allows creating, reading, updating, and deleting book clubs and books, as well as adding and removing members and reviews from book clubs and reading sessions.
 
 ## Installation :floppy_disk:
 
