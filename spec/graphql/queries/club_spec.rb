@@ -7,10 +7,10 @@ RSpec.describe Types::QueryType, type: :request do
   let(:club) { Fabricate(:club) }
   let(:data) { json.dig(:data, :club) }
 
-  before {
+  before do
     Fabricate(:reading_session, club:)
     do_graphql_request
-  }
+  end
 
   it_behaves_like 'with standard user' do
     let(:variables) do
