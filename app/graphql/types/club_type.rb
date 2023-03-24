@@ -10,15 +10,7 @@ module Types
     field :admin, Types::UserType
     field :invitation_code, String, null: false
     field :users, Types::UserType.connection_type, null: false
-    field :current_reading_sessions, Types::ReadingSessionType.connection_type, null: false
-    field :previous_reading_sessions, Types::ReadingSessionType.connection_type, null: false
-
-    def current_reading_sessions
-      object.reading_sessions.where.not(state: %w[conclusion archived])
-    end
-
-    def previous_reading_sessions
-      object.reading_sessions.where(state: %w[conclusion archived])
-    end
+    field :current_reading_session, Types::ReadingSessionType, null: true
+    field :previous_reading_sessions, [Types::ReadingSessionType.connection_type], null: true
   end
 end

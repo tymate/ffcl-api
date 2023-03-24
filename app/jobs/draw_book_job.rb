@@ -9,7 +9,7 @@ class DrawBookJob < ApplicationJob
     selected_book = reading_session.propositions.sample&.book
     reading_session.update(selected_book:)
 
-    reading_session.club.previous_reading_session&.archive
+    reading_session.club.previous_reading_sessions&.archive
     reading_session.start_reading!
   end
 end

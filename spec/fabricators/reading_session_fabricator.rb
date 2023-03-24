@@ -21,6 +21,10 @@ Fabricator(:reading_session_at_conclusion_state, from: :reading_session) do
   state { 'conclusion' }
 end
 
+Fabricator(:reading_session_at_archived_state, from: :reading_session) do
+  state { 'archived' }
+end
+
 # club
 # name                { Faker::Lorem.word }
 # next_step_date      nil

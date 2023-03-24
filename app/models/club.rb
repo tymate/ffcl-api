@@ -7,7 +7,7 @@ class Club < ApplicationRecord
 
   belongs_to :admin, class_name: 'User', optional: true
 
-  def previous_reading_session
+  def previous_reading_sessions
     reading_sessions.find_by(state: 'conclusion')
   end
 
